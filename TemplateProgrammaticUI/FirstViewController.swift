@@ -191,3 +191,14 @@ class FirstViewController: UIViewController {
     
 
 }
+
+import SwiftUI
+struct ViewControllerProvider: PreviewProvider {
+    static var previews: some View {
+        Group {
+            // change to your vc
+            FirstViewController().preview()
+        }
+    }
+}
+
