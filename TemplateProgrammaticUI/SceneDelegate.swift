@@ -17,7 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        let startingViewController = FirstViewController()
+        //let startingViewController = FirstViewController()
+        let startingViewController = MainViewController()
         startingViewController.title = "Login screen"
         let navigationController = UINavigationController(rootViewController: startingViewController)
         //navigationController.hidesBarsOnTap = true
