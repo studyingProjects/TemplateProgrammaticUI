@@ -26,6 +26,27 @@ class FirstViewController: UIViewController {
         setupActions()
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        fbButton.layer.cornerRadius = fbButton.frame.height / 2
+        gmailButton.layer.cornerRadius = gmailButton.frame.height / 2
+        emailButton.layer.cornerRadius = emailButton.frame.height / 2
+        
+        let shadowLayer = CAShapeLayer()
+        shadowLayer.shadowColor = UIColor.black.cgColor
+        shadowLayer.shadowPath = UIBezierPath(roundedRect: fbButton.bounds, cornerRadius: fbButton.layer.cornerRadius).cgPath
+        shadowLayer.shadowOffset = CGSize(width: 5.0, height: 10.0)
+        shadowLayer.shadowOpacity = 0.7
+        shadowLayer.shadowRadius = 10
+        
+        fbButton.layer.insertSublayer(shadowLayer, at: 0)
+        gmailButton.layer.insertSublayer(shadowLayer, at: 0)
+        emailButton.layer.insertSublayer(shadowLayer, at: 0)
+        
+    }
+    
+    
     private func setupView() {
         self.view.addSubview(contentView)
         //self.view.backgroundColor = .blue
@@ -46,6 +67,8 @@ class FirstViewController: UIViewController {
         setupEmailButton()
         setupHintLabel()
         setupTitleLabel()
+                
+        view.layoutIfNeeded()
     }
     
     private func setupContentView() {
@@ -68,11 +91,14 @@ class FirstViewController: UIViewController {
             backGroundImage.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
     }
-    
+    // MARK: - Buttons
     private func setupFbButton() {
         fbButton.setBackgroundImage(UIImage(named: "FB"), for: .normal)
         fbButton.setTitle("Sign in with Facebook", for: .normal)
         fbButton.setTitleColor(.black, for: .normal)
+        
+        fbButton.layer.masksToBounds = true
+        //fbButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner]
         
         fbButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -88,6 +114,8 @@ class FirstViewController: UIViewController {
         gmailButton.setTitle("Sign in with Google", for: .normal)
         gmailButton.setTitleColor(.black, for: .normal)
         
+        gmailButton.layer.masksToBounds = true
+        
         gmailButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             gmailButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 50),
@@ -101,6 +129,8 @@ class FirstViewController: UIViewController {
         emailButton.setBackgroundImage(UIImage(named: "Email"), for: .normal)
         emailButton.setTitle("Sign in with Email", for: .normal)
         emailButton.setTitleColor(.black, for: .normal)
+        
+        //emailButton.layer.masksToBounds = true
         
         emailButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
