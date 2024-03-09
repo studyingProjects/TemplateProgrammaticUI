@@ -182,7 +182,12 @@ private extension MainViewController {
         
         // Content view, first way to add constraints
         contentView.translatesAutoresizingMaskIntoConstraints = false
+        // MARK: - Anchors
         contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        //contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        contentView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        // MARK: - NSLayoutConstraints
         // second way
         NSLayoutConstraint(
             item: contentView,
@@ -192,9 +197,6 @@ private extension MainViewController {
             attribute: .trailing,
             multiplier: 1,
             constant:  0).isActive = true
-        //contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        contentView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         // Background image / one more way to add constraints through an array
         NSLayoutConstraint.activate([
@@ -205,34 +207,34 @@ private extension MainViewController {
         ])
         // FaceBook button
         NSLayoutConstraint.activate([
-            fbButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 50),
-            fbButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50),
+            fbButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Sizes.Padding.double),
+            fbButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Sizes.Padding.double),
             fbButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             fbButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
         // Gmail button
         NSLayoutConstraint.activate([
-            gmailButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 50),
-            gmailButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50),
-            gmailButton.topAnchor.constraint(equalTo: fbButton.bottomAnchor, constant: 20),
+            gmailButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Sizes.Padding.double),
+            gmailButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Sizes.Padding.double),
+            gmailButton.topAnchor.constraint(equalTo: fbButton.bottomAnchor, constant: Sizes.Padding.usual),
             gmailButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
         // Email button
         NSLayoutConstraint.activate([
-            emailButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 50),
-            emailButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50),
-            emailButton.topAnchor.constraint(equalTo: gmailButton.bottomAnchor, constant: 20),
+            emailButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Sizes.Padding.double),
+            emailButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Sizes.Padding.double),
+            emailButton.topAnchor.constraint(equalTo: gmailButton.bottomAnchor, constant: Sizes.Padding.usual),
             emailButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
         
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: hintLabel.topAnchor, constant: -50)
+            titleLabel.bottomAnchor.constraint(equalTo: hintLabel.topAnchor, constant: -Sizes.Padding.double)
         ])
         
         NSLayoutConstraint.activate([
             hintLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            hintLabel.bottomAnchor.constraint(equalTo: fbButton.topAnchor, constant: -20)
+            hintLabel.bottomAnchor.constraint(equalTo: fbButton.topAnchor, constant: -Sizes.Padding.usual)
         ])
         
     }
