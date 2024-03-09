@@ -141,7 +141,14 @@ class FirstViewController: UIViewController {
     
     // MARK: - Action methods
     @objc func fbButtonPressed() {
-        print("fbButtonPressed")
+        let newViewController = SecondViewController()
+        newViewController.title = "Facebook screen"
+        // first way
+//        newViewController.modalPresentationStyle = .fullScreen
+//        self.present(newViewController, animated: true)
+        
+        // second way
+        self.navigationController?.pushViewController(newViewController, animated: true)
     }
     
     @objc func gmailButtonPressed() {
