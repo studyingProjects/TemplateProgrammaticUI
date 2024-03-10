@@ -17,6 +17,15 @@ class MainViewController: UIViewController {
     private lazy var emailButton: UIButton = getEmailButton()
     private lazy var titleLabel: UILabel = getTitleLabel()
     private lazy var hintLabel: UILabel = getHintLabel()
+    // stack layout example
+//    private lazy var stackView: UIStackView = {
+//        let stackView = UIStackView()
+//        stackView.axis = .vertical
+//        stackView.spacing = Sizes.Padding.half
+//        stackView.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        return stackView
+//    }()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -37,6 +46,11 @@ class MainViewController: UIViewController {
 //        navigationController?.navigationBar.prefersLargeTitles = true
         
         view.addSubview(contentView)
+        // for stack example
+        //contentView.addSubview(stackView)
+        //stackView.addArrangedSubview(fbButton)
+        //stackView.addArrangedSubview(gmailButton)
+        // for stack example
         contentView.addSubview(backGroundImage)
         contentView.addSubview(fbButton)
         contentView.addSubview(gmailButton)
@@ -197,7 +211,7 @@ private extension MainViewController {
             attribute: .trailing,
             multiplier: 1,
             constant:  0).isActive = true
-        
+        // MARK: - Anchors
         // Background image / one more way to add constraints through an array
         NSLayoutConstraint.activate([
             backGroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -237,6 +251,20 @@ private extension MainViewController {
             hintLabel.bottomAnchor.constraint(equalTo: fbButton.topAnchor, constant: -Sizes.Padding.usual)
         ])
         
+    }
+    
+    // MARK: - VFL
+    func layoutThroughTheVisualFormatLanguage() {
+        // with special string
+        // not popular and old type of layout
+        let views: [String: Any] = ["button": fbButton]
+        
+        let constraint1 = NSLayoutConstraint.constraints(
+            withVisualFormat: "|[button(200)]|",
+            metrics: nil,
+            views: views)
+        
+        view.addConstraints(constraint1)
     }
 }
 
