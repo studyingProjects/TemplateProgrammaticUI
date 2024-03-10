@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import PinLayout
 
 class MainViewController: UIViewController {
     // MARK: - Properties
@@ -227,7 +228,10 @@ private extension MainViewController {
             fbButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             fbButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
+        // MARK: - PinLayout
         // Gmail button
+        //gmailButton.pin.left().right().margin(Sizes.Padding.double)
+        // https://github.com/layoutBox/PinLayout?tab=readme-ov-file#intro_usage_examples
         NSLayoutConstraint.activate([
             gmailButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Sizes.Padding.double),
             gmailButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Sizes.Padding.double),
