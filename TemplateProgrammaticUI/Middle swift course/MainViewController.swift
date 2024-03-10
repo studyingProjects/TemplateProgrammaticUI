@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class MainViewController: UIViewController {
     // MARK: - Properties
@@ -234,12 +235,22 @@ private extension MainViewController {
             gmailButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
         // Email button
-        NSLayoutConstraint.activate([
-            emailButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Sizes.Padding.double),
-            emailButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Sizes.Padding.double),
-            emailButton.topAnchor.constraint(equalTo: gmailButton.bottomAnchor, constant: Sizes.Padding.usual),
-            emailButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
-        ])
+//        NSLayoutConstraint.activate([
+//            emailButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Sizes.Padding.double),
+//            emailButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Sizes.Padding.double),
+//            emailButton.topAnchor.constraint(equalTo: gmailButton.bottomAnchor, constant: Sizes.Padding.usual),
+//            emailButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+//        ])
+        // MARK: - SnapKit
+        // Email button SnapKit
+        emailButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(Sizes.Padding.double)
+            make.trailing.equalToSuperview().offset(-Sizes.Padding.double)
+            make.top.equalTo(gmailButton.snp.bottom).offset(Sizes.Padding.usual)
+            make.centerX.equalToSuperview()
+        }
+        
+        
         
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
